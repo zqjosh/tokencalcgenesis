@@ -20,8 +20,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-        
-        /* Animated background */
         body::before {
             content: '';
             position: fixed;
@@ -351,8 +349,6 @@
                 gap: 20px;
             }
         }
-        
-        /* Glow effects */
         .glow-1 {
             position: absolute;
             top: 10%;
@@ -419,14 +415,18 @@
             
             <div id="result" style="display: none;"></div>
             
+            <div class="creator-info" style="background: rgba(102, 126, 234, 0.08); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                <p style="margin-bottom: 10px; color: rgba(255, 255, 255, 0.9);">ðŸŽ® Free tool for SPTS: Genesis players</p>
+                <a href="https://www.roblox.com/users/1104119355/profile" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='#4facfe'" onmouseout="this.style.color='#667eea'">Follow Josh on Roblox â†’</a>
+            </div>
+            
             <div class="footer">
-                Rescripted by 41kuv, Josh • Calculate your token growth overtime (MADE FOR SPTS: GENESIS)
+                Rescripted by 41kuv, Josh â€¢ Calculate your token growth overtime (MADE FOR SPTS: GENESIS)
             </div>
         </div>
     </div>
 
     <script>
-        // Create floating particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             
@@ -439,12 +439,11 @@
                 particlesContainer.appendChild(particle);
             }
         }
-        
-        // Parse number with commas and letter suffixes (K, M, B, T)
+        // added support for further numbers
         function parseNumber(str) {
             if (!str) return 0;
             let s = str.replace(/,/g, '').trim().toUpperCase();
-            const multipliers = { 'K': 1e3, 'M': 1e6, 'B': 1e9, 'T': 1e12 };
+            const multipliers = { 'K': 1e3, 'M': 1e6, 'B': 1e9, 'T': 1e12, 'QA': 1e15, 'QI': 1e18, 'SX': 1e21 }; 
             const lastChar = s[s.length - 1];
             let multiplier = 1;
 
@@ -464,12 +463,12 @@
             const targetTokens = parseNumber(document.getElementById('target-tokens').value);
 
             if (targetTokens <= currentTokens) {
-                showResult('🎉 You already have enough tokens!');
+                showResult('ðŸŽ‰ You already have enough tokens!');
                 return;
             }
 
             if (baseTPM <= 0) {
-                showResult('⚠️ Please enter a valid TPM greater than 0');
+                showResult('âš ï¸ Please enter a valid TPM greater than 0');
                 return;
             }
 
@@ -503,7 +502,7 @@
             if (minutes > 0) timeString += `${minutes}m `;
             timeString += `${seconds}s`;
 
-            showResult(`⏱️ ${timeString}`);
+            showResult(`â±ï¸ ${timeString}`);
         }
 
         function showResult(message) {
@@ -525,15 +524,12 @@
             document.getElementById('target-tokens').value = '0';
             document.getElementById('result').style.display = 'none';
         }
-
-        // Add enter key support
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 calculateTime();
             }
         });
 
-        // Initialize particles on load
         window.addEventListener('load', createParticles);
     </script>
 </body>
